@@ -16,10 +16,10 @@ void main() {
     }
   }
 
-  num number1 = getInput("Enter first number: ");
-  num number2 = getInput("Enter second number: ");
+  int number1 = getInput("Enter first number: ").toInt();
+  double number2 = getInput("Enter second number: ").toDouble();
 
-  num sum = number2 + number1;
+  double sum =  number1 + number2 ;
 
   print("The sum is ${sum}");
 }

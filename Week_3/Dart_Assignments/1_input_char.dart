@@ -4,12 +4,11 @@ import 'dart:io';
 void main(){
 
   stdout.write("Enter a character: ");
-  String? char = stdin.readLineSync()??"";
+  String char = stdin.readLineSync()??'';
   if (char.length == 1){
     print("The character is '$char' ");
   }
   else {
     print("Enter one character");
   }
-
 }
