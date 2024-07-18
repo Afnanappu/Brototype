@@ -13,6 +13,7 @@ int main() {
     return 1;
   }
   string = string.replaceAll(RegExp(r'\s+'), ' ');
+  string.replaceAll(RegExp(source), "b")
 
   print("After extra blank space removed: $string");
 
