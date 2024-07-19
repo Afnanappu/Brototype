@@ -56,6 +56,16 @@ flutter:
   assets:
     - assets\icons\whatsApp_icon.png
     - assets\items\navy blue t-shirt.webp
+    - assets\items\Couch Potato Women.webp
+    - assets\items\Couch Potato Men.webp
+    - assets\items\Mug Explore.jpg
+    - assets\items\Combo Blast 1.png
+    - assets\items\Mug Orchard.jpeg
+    - assets\items\Combo Blast 2.png
+    - assets\items\I See Combo Pack.jpeg
+    - assets\items\Kids Combo Blast.png
+
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

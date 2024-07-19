@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ui_designs/home_screen.dart';
 import 'package:ui_designs/screens/additional_info_screen.dart';
+import 'package:ui_designs/screens/catalogue_screen.dart';
 import 'package:ui_designs/screens/manage_store_screen.dart';
 import 'package:ui_designs/screens/order_screen.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'UI Design',
       debugShowCheckedModeBanner: false,
-      
+
       theme: ThemeData(
         appBarTheme:const AppBarTheme(
           iconTheme: IconThemeData(color: Colors.white),
@@ -38,7 +39,8 @@ class MyApp extends StatelessWidget {
         "/": (ctx) => const HomeScreen(),
         "/additional_info_screen": (ctx) =>const AdditionalInfoScreen(),
         "/manage_store_screen": (ctx) =>const ManageStoreScreen(),
-        "/order_screen": (ctx) => OrderScreen(),
+        "/order_screen": (ctx) =>const OrderScreen(),
+        "/catalogue_screen": (ctx) => CatalogueScreen(),
       },
     );
   }
