@@ -5,6 +5,8 @@ import 'package:ui_designs/screens/additional_info_screen.dart';
 import 'package:ui_designs/screens/catalogue_screen.dart';
 import 'package:ui_designs/screens/manage_store_screen.dart';
 import 'package:ui_designs/screens/order_screen.dart';
+import 'package:ui_designs/screens/payments_screen.dart';
+import 'package:ui_designs/screens/premium_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,7 +42,9 @@ class MyApp extends StatelessWidget {
         "/additional_info_screen": (ctx) =>const AdditionalInfoScreen(),
         "/manage_store_screen": (ctx) =>const ManageStoreScreen(),
         "/order_screen": (ctx) =>const OrderScreen(),
-        "/catalogue_screen": (ctx) => CatalogueScreen(),
+        "/catalogue_screen": (ctx) =>const CatalogueScreen(),
+        "/payment_screen": (ctx) =>const PaymentsScreen(),
+        "/premium_screen": (ctx) =>const PremiumScreen(),
       },
     );
   }

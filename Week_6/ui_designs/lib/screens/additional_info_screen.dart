@@ -11,6 +11,15 @@ class AdditionalInfoScreen extends StatefulWidget {
 class _AdditionalInfoScreenState extends State<AdditionalInfoScreen> {
   bool isSwitchPressed = false;
 
+
+  @override
+  void initState() {
+    
+    super.initState();
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

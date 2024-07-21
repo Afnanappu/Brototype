@@ -193,6 +193,7 @@ class _ProductsState extends State<Products> {
                           });
                         },
                         activeColor: Colors.blue,
+                        trackOutlineWidth: WidgetStateProperty.resolveWith((_)=>0),
                       )
                     ],
                   ),

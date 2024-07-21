@@ -8,7 +8,7 @@ class ManageStoreScreen extends StatefulWidget {
 }
 
 class _ManageStoreScreenState extends State<ManageStoreScreen> {
-  int selectedIndex = 3;
+
 
   @override
   Widget build(BuildContext context) {
@@ -100,17 +100,12 @@ class _ManageStoreScreenState extends State<ManageStoreScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.layers), label: "Manage"),
           BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: "Account")
         ],
-        currentIndex: selectedIndex,
+        currentIndex: 3,
         backgroundColor: Colors.white,
         unselectedItemColor: Colors.grey,
         unselectedLabelStyle: TextStyle(color: Colors.grey),
         selectedItemColor: Colors.blue,
         showUnselectedLabels: true,
-        onTap: (value) {
-          setState(() {
-            selectedIndex = value;
-          });
-        },
       ),
     );
   }
