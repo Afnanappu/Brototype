@@ -330,7 +330,10 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                               style: const TextStyle(
                                   fontSize: 17, fontWeight: FontWeight.w500),
                             ),
-                            Text("₹${orderItemList[index].productOrderPrice}"),
+                            Text(
+                              "₹${orderItemList[index].productOrderPrice}",
+                              style: const TextStyle(color: Colors.blue),
+                            ),
                           ],
                         ),
                         subtitle: Row(
@@ -358,13 +361,16 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                       ),
 
                       //
-                      Text(
-                        "     ₹${orderItemList[index].productOrderPrice} deposited to 58860200000138",
-                        style: const TextStyle(
-                            color: Colors.grey,
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 14),
+                        child: Text(
+                          "₹${orderItemList[index].productOrderPrice} deposited to 58860200000138",
+                          style: const TextStyle(
+                              color: Colors.grey,
+                              fontStyle: FontStyle.italic,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12),
+                        ),
                       )
                     ],
                   );
@@ -494,7 +500,7 @@ List<OrderItem> orderItemList = [
   //15
   OrderItem(
     productOrderNumber: "1171800",
-    productOrderDateTime: "Feb 13, 07:57 aM",
+    productOrderDateTime: "Feb 13, 07:57 PM",
     productOrderPrice: "524.25",
     productOrderImage: 'assets/items/Mug Orchard.jpeg',
   )

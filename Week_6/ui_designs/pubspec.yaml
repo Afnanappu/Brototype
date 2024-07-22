@@ -64,6 +64,8 @@ flutter:
     - assets\items\Combo Blast 2.png
     - assets\items\I See Combo Pack.jpeg
     - assets\items\Kids Combo Blast.png
+    - assets\icons\logo.png
+    - assets\icons\youtube_video.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

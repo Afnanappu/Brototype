@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class OrderScreen extends StatelessWidget {
@@ -261,13 +262,40 @@ class OrderScreen extends StatelessWidget {
               ),
 
               //
-              const ListTile(
-                contentPadding: EdgeInsets.all(0),
-                title: Text(
-                  "Payment",
-                  style: TextStyle(fontWeight: FontWeight.w600),
-                ),
-                subtitle: Text("Online"),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  //Payment
+                  Expanded(
+                    child: const ListTile(
+                      contentPadding: EdgeInsets.all(0),
+                      title: Text(
+                        "Payment",
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                      subtitle: Text("Online"),
+                    ),
+                  ),
+
+                  //PAID
+                  Container(
+                    height: 28,
+                    width: 48,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: const Color.fromARGB(255, 178, 241, 180),
+                      ),
+                      borderRadius: BorderRadius.circular(6),
+                      color:const Color.fromARGB(255, 216, 249, 219)
+                    ),
+                    child:const Center(
+                        child: Text(
+                      "PAID",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 17, 163, 22), fontWeight: FontWeight.bold),
+                    )),
+                  )
+                ],
               ),
 
               //
@@ -310,21 +338,24 @@ class OrderScreen extends StatelessWidget {
                 onPressed: () {},
                 style: ButtonStyle(
                   side: WidgetStateBorderSide.resolveWith(
-                      (_) =>const BorderSide(color: Colors.blue)),
-                  fixedSize:const WidgetStatePropertyAll(Size(double.maxFinite, 30)),
+                      (_) => const BorderSide(color: Colors.blue)),
+                  fixedSize:
+                      const WidgetStatePropertyAll(Size(double.maxFinite, 30)),
                   shape: WidgetStateProperty.all(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                 ),
-                child:const Text(
+                child: const Text(
                   "Shared receipt",
                   style: TextStyle(color: Colors.blue),
                 ),
               ),
 
-              const SizedBox(height: 10,)
+              const SizedBox(
+                height: 10,
+              )
             ],
           ),
         ),

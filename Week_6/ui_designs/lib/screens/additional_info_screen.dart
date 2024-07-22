@@ -9,7 +9,7 @@ class AdditionalInfoScreen extends StatefulWidget {
 }
 
 class _AdditionalInfoScreenState extends State<AdditionalInfoScreen> {
-  bool isSwitchPressed = false;
+  bool isSwitchPressed = true;
 
 
   @override
@@ -35,7 +35,7 @@ class _AdditionalInfoScreenState extends State<AdditionalInfoScreen> {
                 const ListTile(
                   //Share Dukaan App
                   leading: Icon(
-                    Icons.share,
+                    Icons.share_outlined,
                     size: 30,
                   ),
                   title: Text("Share Dukaan App"),

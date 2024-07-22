@@ -8,8 +8,6 @@ class ManageStoreScreen extends StatefulWidget {
 }
 
 class _ManageStoreScreenState extends State<ManageStoreScreen> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +19,6 @@ class _ManageStoreScreenState extends State<ManageStoreScreen> {
       body: GridView(
         gridDelegate:
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-
         children: [
           MyCards(
             name: "Marketing Designs",
@@ -39,7 +36,6 @@ class _ManageStoreScreenState extends State<ManageStoreScreen> {
               Icons.currency_rupee,
               size: 35,
               color: Colors.white,
-              
             ),
           ),
           MyCards(
@@ -98,12 +94,13 @@ class _ManageStoreScreenState extends State<ManageStoreScreen> {
           BottomNavigationBarItem(
               icon: Icon(Icons.grid_view), label: "Products"),
           BottomNavigationBarItem(icon: Icon(Icons.layers), label: "Manage"),
-          BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: "Account")
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person_outline), label: "Account")
         ],
         currentIndex: 3,
         backgroundColor: Colors.white,
         unselectedItemColor: Colors.grey,
-        unselectedLabelStyle: TextStyle(color: Colors.grey),
+        unselectedLabelStyle: const TextStyle(color: Colors.grey),
         selectedItemColor: Colors.blue,
         showUnselectedLabels: true,
       ),
@@ -131,7 +128,7 @@ class MyCards extends StatelessWidget {
   Widget build(BuildContext context) {
     //todo: Check why the height and width is not changing
     return Card(
-      margin: const EdgeInsets.all(12),
+      margin: const EdgeInsets.only(top: 15, bottom: 15, left: 12, right: 12),
       child: Row(
         children: [
           Expanded(

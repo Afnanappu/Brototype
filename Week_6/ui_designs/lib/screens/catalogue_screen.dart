@@ -137,6 +137,14 @@ class _ProductsState extends State<Products> {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey[200]!,
+              spreadRadius: 2,
+              blurRadius: 3,
+
+            )
+          ]
         ),
         child: Column(
           children: [
