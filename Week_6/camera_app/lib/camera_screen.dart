@@ -1,12 +1,12 @@
 import 'dart:io';
-
 import 'package:camera/camera.dart';
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
-// import 'package:path/path.dart';
+import 'package:camera_app/list_images_screen.dart';
+import 'package:gallery_saver/gallery_saver.dart';
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class CameraScreen extends StatefulWidget {
+  //Receiving the cameraList to cameras through Constructor
   final List<CameraDescription> cameras;
   const CameraScreen({super.key, required this.cameras});
 
@@ -15,13 +15,22 @@ class CameraScreen extends StatefulWidget {
 }
 
 class _CameraScreenState extends State<CameraScreen> {
+  //Creating a CameraController for controlling whole camera related process
   late CameraController _cameraController;
+
+  //To find is cameraAccess is given or not
   bool isCameraAccessDenied = false;
+
+  //To change the camera(Front and Back)
   int selectedCamera = 0;
-  late CameraDescription camera;
+
+  //
+  List<File> _images = [];
 
   //Creating a function to initialize the camera and this function is called in initState()
-  void initCamera(int selectedCamera) {
+  void _initCamera(int selectedCamera) {
+    //Selecting a camera(Front or Back) and it's resolution(like 720p, 1080p...)
+    //ResolutionPreset.max gives the maximum supported clarity of photo
     _cameraController =
         CameraController(widget.cameras[selectedCamera], ResolutionPreset.max);
     _cameraController.initialize().then(
@@ -30,6 +39,7 @@ class _CameraScreenState extends State<CameraScreen> {
         if (!mounted) {
           return;
         }
+        //refreshing the screen
         setState(() {});
       },
 
@@ -55,14 +65,26 @@ class _CameraScreenState extends State<CameraScreen> {
     );
   }
 
+  void _getStoragePermission() async {
+    var status = await Permission.storage.status;
+    if (status.isDenied) {
+      print("Asked for storage permission");
+      await Permission.storage.request();
+      print("Storage Permission is granted");
+    }
+  }
+
   //Initializing the camera
   @override
   void initState() {
     //Here selectedCamera is passed so that we can switch between front and back Camera
     //also the whole initialization is processed in initCamera function
-    initCamera(selectedCamera);
+    _initCamera(selectedCamera);
+    _getStoragePermission();
     super.initState();
   }
+
+ 
 
   //To dispose the camera controller(Stopping the camera preview)
   @override
@@ -79,7 +101,9 @@ class _CameraScreenState extends State<CameraScreen> {
         actions: [
           //Folder Icon and function
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>const ListImagesScreen()));
+            },
             icon: const Icon(
               Icons.folder,
             ),
@@ -112,12 +136,9 @@ class _CameraScreenState extends State<CameraScreen> {
                     IconButton(
                         onPressed: () {
                           setState(() {
-                            if (selectedCamera == 0) {
-                              selectedCamera = 1;
-                            } else {
-                              selectedCamera = 0;
-                            }
-                            initCamera(selectedCamera);
+                            //
+                            selectedCamera = selectedCamera == 0 ? 1 : 0;
+                            _initCamera(selectedCamera);
                           });
                           print("Camera switched");
                         },
@@ -131,14 +152,24 @@ class _CameraScreenState extends State<CameraScreen> {
         padding: const EdgeInsets.only(bottom: 50),
         child: FloatingActionButton(
           onPressed: () async {
-            final XFile image = await _cameraController.takePicture();
-            print("XFile path: ${image.path}");
-            final directory =
-                join((await getExternalStorageDirectory())!.path, "Photos");
-            await Directory(directory).create(recursive: true);
-            final path = join(directory, "${DateTime.now()}.jpg");
-            await image.saveTo(path);
-            print("Saved Image to path ${path}");
+            try {
+              print("Image Captured");
+
+              //Takes a picture and give return the file where it is saved
+              final XFile image = await _cameraController.takePicture();
+              print("XFile path: ${image.path}");
+
+              final path = image.path;
+              await GallerySaver.saveImage(path, albumName: "CameraApp")
+                  .then((value) => print("Saved Image to path ${path}"))
+                  .onError(
+                    (error, _) => print("Error while saving the image: $error"),
+                  );
+
+              _showPreviewDialog(context, File(path));
+            } catch (e) {
+              print("Error while saving image: $e");
+            }
           },
           backgroundColor: Colors.white,
           autofocus: true,
@@ -148,4 +179,26 @@ class _CameraScreenState extends State<CameraScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
+}
+
+void _showPreviewDialog(BuildContext context, File imageFile) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return Dialog(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.file(imageFile),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text("Close"),
+            ),
+          ],
+        ),
+      );
+    },
+  );
 }
