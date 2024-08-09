@@ -134,6 +134,7 @@ class _CameraScreenState extends State<CameraScreen> {
 
                     //Camera Change from front to back and vice versa
                     IconButton(
+                      enableFeedback: true,
                         onPressed: () {
                           setState(() {
                             //

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:camera_app/show_image_screen.dart';
 import 'package:flutter/material.dart';
 
 class ListImagesScreen extends StatefulWidget {
@@ -45,7 +46,16 @@ class _ListImagesScreenState extends State<ListImagesScreen> {
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3, crossAxisSpacing: 0, mainAxisSpacing: 10),
         itemBuilder: (ctx, index) {
-          return GridTile(child: Image.file(_images[index]));
+          return InkWell(
+            onTap: (){
+              Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>ShowImageScreen(image: _images[index])));
+            },
+            child: GridTile(
+              child: Image.file(
+                _images[index],
+              ),
+            ),
+          );
         },
       ),
     );

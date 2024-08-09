@@ -13,7 +13,6 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             //Additional Information screen
-            //todo: Add icons to the list items
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pushNamed("/additional_info_screen");
@@ -27,7 +26,6 @@ class HomeScreen extends StatelessWidget {
             ),
 
             //Manage Store
-            //todo: Check why the height and width of card is not changing
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pushNamed("/manage_store_screen");
@@ -83,19 +81,6 @@ class HomeScreen extends StatelessWidget {
               ),
               child: const Text("Dukaan Premium"),
             ),
-
-            // Container(
-            //   height: 100,
-            //   width: 100,
-            //   decoration: BoxDecoration(
-            //     boxShadow: [
-            //       BoxShadow(
-            //         color: Colors.red,
-            //     spreadRadius: 10
-            //       )
-            //     ]
-            //   ),
-            // )
           ],
         ),
       ),

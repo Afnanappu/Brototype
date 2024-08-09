@@ -52,7 +52,6 @@ class PremiumScreen extends StatelessWidget {
                                       color: Colors.blue,
                                       fontSize: 12),
                                 )
-                                // Align(alignment: Alignment(0,0),child: const Text("PREMIUM")),
                               ],
                             ),
                             const Text(
