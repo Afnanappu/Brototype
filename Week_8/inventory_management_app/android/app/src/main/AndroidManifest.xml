@@ -1,8 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:label="inventory_management_app"
+        android:label="IM - Inventory Management"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/app_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"
