@@ -1,12 +1,14 @@
 void main() {
-  final Stack<String> stack = Stack<String>();
+  final Stack<int> stack = Stack<int>();
 
-  String str = 'h((e))llo(world)()';
-  // String str = '())(';
-
-  print(
-      'String `$str` is ${stack.balanceTheParentheses(str) ? 'balanced' : 'not balanced'}');
+  stack.push(10);
+  stack.push(20);
+  stack.push(30);
+  print(stack.peek);
   print(stack);
+  print(stack.pop());
+  print(stack);
+  print(stack.peek);
 }
 
 class Stack<E> {

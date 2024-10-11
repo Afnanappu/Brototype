@@ -2,10 +2,6 @@ void main() {
   List<int> arr = [64, 34, 25, 12, 22, 11, 90];
   print('Original array: $arr');
   insertionSort(arr);
-
-  // Stream.fromIterable(arr).listen(
-  //   (event) => stdout.write('$event, '),
-  // );
 }
 
 void insertionSort(List<int> arr) {

@@ -1,17 +1,11 @@
 void main() {
   final MyHashMap<String, dynamic> hashMap = MyHashMap<String, dynamic>(10);
 
-
-
   hashMap.add(HashNode('anshif', 100));
   hashMap.add(HashNode('afnan', 300));
   hashMap.add(HashNode('afnan', [10, 20, 30]));
-
   hashMap.display();
-
-
   print(hashMap.getElement('afnan'));
-
   print(hashMap.containValue([10, 20, 20]));
 }
 

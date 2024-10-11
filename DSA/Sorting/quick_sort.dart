@@ -64,8 +64,7 @@ void _quickSortHelper(List<int> arr, int start, int end) {
   if (start >= end) {
     return;
   }
-
-
+  
   int pvt = _partitionForQuickSort(arr, start, end);
 
   _quickSortHelper(arr, start, pvt - 1);
