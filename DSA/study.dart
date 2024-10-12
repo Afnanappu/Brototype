@@ -69,8 +69,8 @@ void quickSort(List<int> arr) {
     }
 
     int pvt = _partition(arr, start, end);
-    _sort(arr, start, pvt - 1);
-    _sort(arr, pvt + 1, end);
+    _sort(arr, start, pvt - 1);//left
+    _sort(arr, pvt + 1, end);//rigth 
   }
 
   _sort(arr, 0, arr.length - 1);
